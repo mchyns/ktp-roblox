@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTP Generator - Untuk Verifikasi Roblox</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-id-card"></i> KTP Generator</h1>
+            <p>Generator KTP untuk Verifikasi Game Roblox</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Form Input Data -->
+            <div class="form-section">
+                <h2><i class="fas fa-edit"></i> Data Diri</h2>
+                <form id="ktpForm">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap:</label>
+                        <input type="text" id="nama" name="nama" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tempat_lahir">Tempat Lahir:</label>
+                            <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggal_lahir">Tanggal Lahir:</label>
+                            <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="jenis_kelamin">Jenis Kelamin:</label>
+                            <select id="jenis_kelamin" name="jenis_kelamin" required>
+                                <option value="">Pilih</option>
+                                <option value="LAKI-LAKI">Laki-laki</option>
+                                <option value="PEREMPUAN">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="golongan_darah">Golongan Darah:</label>
+                            <select id="golongan_darah" name="golongan_darah">
+                                <option value="">Pilih</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                                <option value="O">O</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="alamat">Alamat:</label>
+                        <textarea id="alamat" name="alamat" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rt_rw">RT/RW:</label>
+                            <input type="text" id="rt_rw" name="rt_rw" placeholder="001/002" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kelurahan">Kel/Desa:</label>
+                            <input type="text" id="kelurahan" name="kelurahan" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kecamatan">Kecamatan:</label>
+                            <input type="text" id="kecamatan" name="kecamatan" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kota">Kab/Kota:</label>
+                            <input type="text" id="kota" name="kota" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="provinsi">Provinsi:</label>
+                            <input type="text" id="provinsi" name="provinsi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="agama">Agama:</label>
+                            <select id="agama" name="agama" required>
+                                <option value="">Pilih</option>
+                                <option value="ISLAM">Islam</option>
+                                <option value="KRISTEN">Kristen</option>
+                                <option value="KATOLIK">Katolik</option>
+                                <option value="HINDU">Hindu</option>
+                                <option value="BUDDHA">Buddha</option>
+                                <option value="KONGHUCU">Konghucu</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="status_perkawinan">Status Perkawinan:</label>
+                            <select id="status_perkawinan" name="status_perkawinan" required>
+                                <option value="">Pilih</option>
+                                <option value="BELUM KAWIN">Belum Kawin</option>
+                                <option value="KAWIN">Kawin</option>
+                                <option value="CERAI HIDUP">Cerai Hidup</option>
+                                <option value="CERAI MATI">Cerai Mati</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pekerjaan">Pekerjaan:</label>
+                            <input type="text" id="pekerjaan" name="pekerjaan" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kewarganegaraan">Kewarganegaraan:</label>
+                        <select id="kewarganegaraan" name="kewarganegaraan" required>
+                            <option value="WNI">WNI</option>
+                            <option value="WNA">WNA</option>
+                        </select>
+                    </div>                    <div class="form-group">
+                        <label for="foto">Upload Foto (Opsional):</label>
+                        <input type="file" id="foto" name="foto" accept="image/*">
+                        <small>Foto akan ditampilkan di KTP. Jika tidak diupload, akan menggunakan avatar default.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signature">Tanda Tangan:</label>
+                        <div class="signature-container">
+                            <canvas id="signatureCanvas" width="300" height="100"></canvas>
+                            <div class="signature-controls">
+                                <button type="button" id="clearSignature" class="btn btn-warning">
+                                    <i class="fas fa-eraser"></i> Hapus
+                                </button>
+                                <small>Gambar tanda tangan Anda di area di atas</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="generateNIK" class="btn btn-secondary">
+                            <i class="fas fa-dice"></i> Generate NIK
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-magic"></i> Buat KTP
+                        </button>
+                    </div>
+                </form>
+            </div>            <!-- Preview KTP -->
+            <div class="ktp-section" id="ktpSection" style="display: none;">
+                <h2><i class="fas fa-id-card"></i> Preview KTP</h2>                <div class="ktp-card">
+                    <!-- Security watermark and patterns -->
+                    <div class="ktp-watermark">REPUBLIK INDONESIA</div>
+                    <div class="ktp-security-pattern"></div>
+                    
+                    <div class="ktp-header">
+                        <div class="ktp-title-center">
+                            <h3>PROVINSI <span id="display_provinsi_header">DKI JAKARTA</span></h3>
+                            <h4><span id="display_kota_header">JAKARTA BARAT</span></h4>
+                        </div>
+                    </div>
+                    
+                    <div class="ktp-content">
+                        <div class="ktp-main-section">                            <div class="ktp-left-data">
+                                <div class="ktp-field">
+                                    <span class="label">NIK</span>
+                                    <span class="value" id="display_nik">: 3171234567890123</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">Nama</span>
+                                    <span class="value" id="display_nama">: MIRA SETIAWAN</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">Tempat/Tgl Lahir</span>
+                                    <span class="value" id="display_ttl">: JAKARTA, 18-02-1986</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">Jenis Kelamin</span>
+                                    <span class="value" id="display_jk_gol">: PEREMPUAN &nbsp;&nbsp;&nbsp; Gol. Darah : <span id="display_gol_darah">B</span></span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">Alamat</span>
+                                    <span class="value" id="display_alamat">: JL. PASTI CEPAT A7/66</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">&nbsp;&nbsp;&nbsp;RT/RW</span>
+                                    <span class="value" id="display_rt_rw">: 007/008</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">&nbsp;&nbsp;&nbsp;Kel/Desa</span>
+                                    <span class="value" id="display_kelurahan">: PEGADUNGAN</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">&nbsp;&nbsp;&nbsp;Kecamatan</span>
+                                    <span class="value" id="display_kecamatan">: KALIDERES</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">Agama</span>
+                                    <span class="value" id="display_agama">: ISLAM</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">Status Perkawinan</span>
+                                    <span class="value" id="display_status">: KAWIN</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">Pekerjaan</span>
+                                    <span class="value" id="display_pekerjaan">: PEGAWAI SWASTA</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">Kewarganegaraan</span>
+                                    <span class="value" id="display_kewarganegaraan">: WNI</span>
+                                </div>
+                                <div class="ktp-field">
+                                    <span class="label">Berlaku Hingga</span>
+                                    <span class="value" id="display_berlaku">: 22-02-2017</span>
+                                </div>
+                            </div>
+                            
+                            <div class="ktp-right-section">
+                                <div class="ktp-photo">
+                                    <img id="display_foto" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEwMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNDAiIHI9IjE1IiBmaWxsPSIjOUNBM0FGIi8+CjxwYXRoIGQ9Ik0yNSA4NUMyNSA3NS4zIDMzLjUgNjcuNSA0NCA2Ny41aDEyYzEwLjUgMCAxOSA3LjggMTkgMTcuNXYxNUgyNVY4NVoiIGZpbGw9IiM5Q0EzQUYiLz4KPC9zdmc+" alt="Foto">
+                                </div>
+                                
+                                <div class="ktp-location-date">
+                                    <div class="ktp-location">
+                                        <span id="display_kota_ktp">JAKARTA BARAT</span>
+                                    </div>
+                                    <div class="ktp-date">
+                                        <span id="display_tanggal_ktp">02-12-2012</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="ktp-signature">
+                                    <canvas id="displaySignature" width="120" height="60"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ktp-actions">
+                    <button type="button" id="downloadKTP" class="btn btn-success">
+                        <i class="fas fa-download"></i> Download KTP
+                    </button>
+                    <button type="button" id="printKTP" class="btn btn-info">
+                        <i class="fas fa-print"></i> Print KTP
+                    </button>
+                    <button type="button" id="resetForm" class="btn btn-warning">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p><i class="fas fa-info-circle"></i> Aplikasi ini dibuat untuk keperluan hiburan dan verifikasi game Roblox.</p>
+            <p><strong>Peringatan:</strong> KTP yang dihasilkan adalah PALSU dan tidak dapat digunakan untuk keperluan resmi!</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
